@@ -115,9 +115,9 @@ DFDMemClass    	   DynFile   	  !MEM Result Class Definition
   !This is important:
   !If you are using "as" in your SQL statement you have to use those "as" values in the GetField/GetFieldValue
   #IF(%qsDFDUseStringTheory = 0)
-  %qsDFDClassName.CreateFromSQL(%qsDFDSQLSelect)
+  !%qsDFDClassName.CreateFromSQL(%qsDFDSQLSelect)
   #ELSE
-  %qsDFDClassName.CreateFromSQL(%qsDFDstClassName.GetVal())
+  !%qsDFDClassName.CreateFromSQL(%qsDFDstClassName.GetVal())
   #ENDIF
   If ErrorCode()
      #IF(%qsDFDNettalkWeb = 0)
