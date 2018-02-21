@@ -96,7 +96,6 @@ DFDMemClass    	   DynFile   	  !MEM Result Class Definition
   #IF(%qsDFDUseStringTheory = 0)
   !Example of select
   !%qsDFDSQLSelect = 'SELECT ContactID as ID, ContactName as ContactName FROM Contacts Order by ContactName'
-  %qsDFDClassName.CreateFromSQL(%qsDFDSQLSelect)
   #ELSE
   !Example of assignment of select
   !%qsDFDstClassName.Assign('SELECT ContactID as ID, ContactName as ContactName FROM Contacts Order by ContactName')
@@ -106,18 +105,18 @@ DFDMemClass    	   DynFile   	  !MEM Result Class Definition
   %qsDFDClassName.SetDriver('%qsDFDDriver')
   #IF(%qsDFDDriver='MSSQL')
   %qsDFDClassName.SetOwner(%qsDFDOwner)
-  #IF(%qsDFDDriverString<>'')
+    #IF(%qsDFDDriverString<>'')
   %qsDFDClassName.SetDriverstring(%qsDFDDriverString)
-  #ENDIF
+    #ENDIF
   #ELSIF(%qsDFDDriver='MEMORY')
   %qsDFDClassName.SetName(%qsDFDMemName)
   #ENDIF
   !This is important:
   !If you are using "as" in your SQL statement you have to use those "as" values in the GetField/GetFieldValue
   #IF(%qsDFDUseStringTheory = 0)
-  !%qsDFDClassName.CreateFromSQL(%qsDFDSQLSelect)
+  %qsDFDClassName.CreateFromSQL(%qsDFDSQLSelect)
   #ELSE
-  !%qsDFDClassName.CreateFromSQL(%qsDFDstClassName.GetVal())
+  %qsDFDClassName.CreateFromSQL(%qsDFDstClassName.GetVal())
   #ENDIF
   If ErrorCode()
      #IF(%qsDFDNettalkWeb = 0)
